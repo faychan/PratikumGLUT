@@ -31,43 +31,88 @@ void drawGrid()
 	glFlush();
 }
 
-void DrawSquare(){
+void DrawEyes(){
 	glLineWidth(5);
+	glColor3f(0, 0, 1);
+	glBegin(GL_LINE_STRIP);
+	glVertex2f(-250, 250);
+	glVertex2f(-300, 250);
+	glVertex2f(-300, 150);
+	glVertex2f(-250, 150);
+	glEnd();
+	glBegin(GL_LINE_STRIP);
+	glVertex2f(250, 250);
+	glVertex2f(300, 250);
+	glVertex2f(300, 150);
+	glVertex2f(250, 150);
+	glEnd();
+
 	glColor3f(1, 0, 0);
-	glBegin(GL_LINE_LOOP);
-	glVertex2f(-100, 100);
-	glVertex2f(-100, -100);
-	glVertex2f(100, -100);
-	glVertex2f(100, 100);
+	glBegin(GL_LINE_STRIP);
+	glVertex2f(-250, 250);
+	glVertex2f(-200, 250);
+	glVertex2f(-200, 150);
+	glVertex2f(-250, 150);
+	glEnd();
+	glBegin(GL_LINE_STRIP);
+	glVertex2f(250, 250);
+	glVertex2f(200, 250);
+	glVertex2f(200, 150);
+	glVertex2f(250, 150);
 	glEnd();
 }
 
-void DrawTri() {
+void DrawNose() {
 	glLineWidth(5);
-	glColor3f(0, 0, 1.0);
-	glBegin(GL_POLYGON);
-	glVertex3f(-100, 100,0);
-	glVertex3f(-200, 0,0);
-	glVertex3f(-100, 0,0); //up left
-	glVertex3f(-100, -100, 0);
-	glVertex3f(0, -200, 0);
-	glVertex3f(0, -100, 0); //bottom left
-	glVertex3f(100, -100, 0);
-	glVertex3f(200, 0, 0);
-	glVertex3f(100, 0, 0);
-	glVertex3f(100, 100, 0);
-	glVertex3f(100, 200, 0);
-	glVertex3f(0, 100, 0);
+	glColor3f(0, 0, 1);
+	glBegin(GL_LINE_STRIP);
+	glVertex2f(-100, 0);
+	glVertex2f(-100, -50);
+	glVertex2f(100, -50);
+	glVertex2f(100, 0);
 	glEnd();
-		
+
+	glColor3f(1, 0, 0);
+	glBegin(GL_LINE_STRIP);
+	glVertex2f(-100, 0);
+	glVertex2f(-100, 50);
+	glVertex2f(100, 50);
+	glVertex2f(100, 0);
+	glEnd();
+}
+
+void DrawMouth() {	
+	glLineWidth(5);
+	glColor3f(0, 0, 1);
+	glBegin(GL_LINE_STRIP);
+	glVertex2f(-150, -200);
+	glVertex2f(-150, -250);
+	glVertex2f(-50, -250);
+	glVertex2f(-50, -200);
+	glEnd();
+	glBegin(GL_LINE_STRIP);
+	glVertex2f(150, -200);
+	glVertex2f(150, -250);
+	glVertex2f(50, -250);
+	glVertex2f(50, -200);
+	glEnd();
+
+	glColor3f(1, 0, 0);
+	glBegin(GL_LINE_LOOP);
+	glVertex2f(-200, -150);
+	glVertex2f(-200, -200);
+	glVertex2f(200, -200);
+	glVertex2f(200, -150);
+	glEnd();
 }
 
 void render()
 { 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	drawGrid();
-	DrawTri();
-	DrawSquare();
+	DrawEyes();
+	DrawNose();
+	DrawMouth();
 	glutSwapBuffers();
 }
 
