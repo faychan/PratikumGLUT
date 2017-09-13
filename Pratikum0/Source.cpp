@@ -6,11 +6,9 @@ void drawSquare()
 {
 	glClear(GL_COLOR_BUFFER_BIT);
 	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-	//glColor3f(1.0, 0.0, 0.0);
+	glColor3f(1.0, 1.0, 1.0);
 	int xsize = 0, ysize = 0;
-	for (int j = 0; j<400; j++)
-	{
-
+	for (int j = 0; j<400; j++){
 		xsize = 0;
 		for (int i = 0; i<400; i++)
 		{
@@ -32,23 +30,25 @@ void drawSquare()
 	glFlush();
 }
 
-
-/* void gambar()
-{
-	glLineWidth(10);
-	glBegin(GL_LINE_LOOP);
-	glColor3f(1, 1, 1);
-	glVertex3f(200, 200, 0);
-	glVertex3f(200, -200, 0);
-	glVertex3f(-200, -200, 0);
-	glVertex3f(-200, 200, 0);
+void DrawPoly(){
+	glLineWidth(2);
+	glColor3f(1.0, 0.0, 1.0);
+	glBegin(GL_POLYGON);
+	glVertex2f(-100, 200);
+	glVertex2f(-200, 0);
+	glVertex2f(-100, -200);
+	glVertex2f(100, -200);
+	glVertex2f(200, 0);
+	glVertex2f(100, 200);
 	glEnd();
-} */
+}
 
 void render()
 { 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	drawSquare();
+	
+	DrawPoly();
 	glutSwapBuffers();
 }
 
