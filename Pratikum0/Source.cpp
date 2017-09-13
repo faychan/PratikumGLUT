@@ -2,12 +2,13 @@
 #include <GL\freeglut.h>
 #include <iostream>
 
-void drawSquare()
+void drawGrid()
 {
 	glClear(GL_COLOR_BUFFER_BIT);
 	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	glColor3f(1.0, 1.0, 1.0);
 	int xsize = 0, ysize = 0;
+	glLineWidth(1);
 	for (int j = 0; j<400; j++){
 		xsize = 0;
 		for (int i = 0; i<400; i++)
@@ -30,25 +31,43 @@ void drawSquare()
 	glFlush();
 }
 
-void DrawPoly(){
-	glLineWidth(2);
-	glColor3f(1.0, 0.0, 1.0);
-	glBegin(GL_POLYGON);
-	glVertex2f(-100, 200);
-	glVertex2f(-200, 0);
-	glVertex2f(-100, -200);
-	glVertex2f(100, -200);
-	glVertex2f(200, 0);
-	glVertex2f(100, 200);
+void DrawSquare(){
+	glLineWidth(5);
+	glColor3f(1, 0, 0);
+	glBegin(GL_LINE_LOOP);
+	glVertex2f(-100, 100);
+	glVertex2f(-100, -100);
+	glVertex2f(100, -100);
+	glVertex2f(100, 100);
 	glEnd();
+}
+
+void DrawTri() {
+	glLineWidth(5);
+	glColor3f(0, 0, 1.0);
+	glBegin(GL_POLYGON);
+	glVertex3f(-100, 100,0);
+	glVertex3f(-200, 0,0);
+	glVertex3f(-100, 0,0); //up left
+	glVertex3f(-100, -100, 0);
+	glVertex3f(0, -200, 0);
+	glVertex3f(0, -100, 0); //bottom left
+	glVertex3f(100, -100, 0);
+	glVertex3f(200, 0, 0);
+	glVertex3f(100, 0, 0);
+	glVertex3f(100, 100, 0);
+	glVertex3f(100, 200, 0);
+	glVertex3f(0, 100, 0);
+	glEnd();
+		
 }
 
 void render()
 { 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	drawSquare();
-	
-	DrawPoly();
+	drawGrid();
+	DrawTri();
+	DrawSquare();
 	glutSwapBuffers();
 }
 
