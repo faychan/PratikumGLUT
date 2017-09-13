@@ -125,7 +125,6 @@ int main(int argc, char* argv[])
 	gluOrtho2D(-400, 400, -300, 300);
 	glClearColor(0, 0, 0, 0);
 	glutDisplayFunc(render);
-
 	glutMainLoop();
 	return 0;
 }
